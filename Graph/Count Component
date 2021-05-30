@@ -1,0 +1,60 @@
+#include <bits/stdc++.h>
+using namespace std;
+#define fastio  ios_base::sync_with_stdio(false);cin.tie(0);cout.tie(0);
+#define ll   long long int
+#define endl '\n'
+#define INF    10000000
+#define D    998244353
+#define PI   3.14159265
+#define N    1000000007
+const int Max =1e5+1;
+
+vector <int> adj[Max];
+bool vis[Max];
+
+void dfs( int s){
+    vis [s]  = true;
+
+    for(int child : adj[s]){
+        if(!vis[child]){
+            dfs(child);
+        }
+    }
+}
+void solve()
+{
+    int n,m;
+    cin>>n>>m;
+
+        for (int i = 0; i < Max; ++i) {
+            vis[i] = false;
+            adj[i].clear();
+
+        }
+    while(m--){
+        int u,v;
+        cin>>u>>v;
+        adj[u].push_back(v);
+        adj[v].push_back(u);
+    }
+    int cnt=0;
+     for (int k = 0; k < n ; ++k) {
+            if(!vis[k]){
+                cnt++;
+                dfs(k);
+            }
+        }
+
+        cout<<cnt<<endl;
+}
+int main()
+{
+    
+    int t;
+    cin>>t;
+    while(t--)
+    {
+        solve();
+    }
+    return 0;
+}
