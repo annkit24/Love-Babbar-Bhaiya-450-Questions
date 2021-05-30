@@ -50,7 +50,28 @@ int main()
 5 6
 2 3
 1 6
-0 1 4 5 6 2 3
+0 1 4 5 6 2 3*/
+/*
+
+int dfs(int node) {
+    int visCount = 1;
+    visited[node] = true;
+    for (auto neighbour: graph[node]) {
+        if (!visited[neighbour]) {
+            visCount += dfs(neighbour);
+        }
+    }
+    return visCount;
+}
     
     */
+
+/*
+First it visits the starting node, which we call the root, and pushes it in a stack.
+While the stack is not empty, the node at the top is examined and one of these two actions takes place:
+If the node has unvisited neighbours, one of them is chosen, visited and pushed in the stack.
+Otherwise, if all the node's neighbours had previously been visited the node presents no further interest and it is popped from the stack.
+When the stack becomes empty it means that all the accessible nodes have been visited, so the algorithm ends.
+
+*/
 }
