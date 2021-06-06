@@ -1,0 +1,21 @@
+#include <iostream>
+using namespace std;
+
+
+void fun(int n,char s,char e,char h){
+    if(n==0){
+        return;
+    }
+    
+    fun(n-1,s,h,e);
+    
+    cout<<n<<" moving from " <<s<<" to "<<e<<endl;
+    fun(n-1,h,e,s);
+    
+}
+int main() {
+	int n;
+	cin>>n;
+	fun(n,'A','C','B');
+	return 0;
+}
