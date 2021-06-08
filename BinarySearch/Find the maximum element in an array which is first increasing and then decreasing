@@ -1,0 +1,50 @@
+#include <bits/stdc++.h>
+using namespace std;
+#define fastio  ios_base::sync_with_stdio(false);cin.tie(0);cout.tie(0);
+#define ll   long long int
+#define endl '\n'
+#define INF    10000000
+#define D    998244353
+#define PI   3.14159265
+#define N    1000000007
+#define M     200001
+
+
+int solve(int a[],int low,int high){
+
+    if(low==high){
+        return a[low];
+    }
+    //only 2 elements are there then
+    if(high==low+1 && a[low]>=a[high]){
+        return a[low];
+    }
+     if(high==low+1 && a[low]<a[high]){
+        return a[high];
+    }
+
+      int mid=low+(high-low)/2;
+    
+    if(a[mid]>a[mid-1]&&a[mid]>a[mid+1]){
+        return a[mid];
+    }
+    if(a[mid]>a[mid-1]&& a[mid]<a[mid+1]){
+        return solve(a,mid+1,high);
+    }else{
+        return solve(a,low,mid-1);
+    }
+
+
+
+
+
+
+}
+int main()
+{
+    int a[]={4,5,6,1,2,3};
+    int n=sizeof(a)/sizeof(int);
+    int maxValuebwCrestandTrough=solve(a,0,n-1);
+        cout<<maxValuebwCrestandTrough<<endl;
+    return 0;
+}
