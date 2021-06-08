@@ -95,6 +95,12 @@ int count(node*root){
     }
     return root->data + count(root->left) + count(root->right);
 }
+int sum(node* root){
+    if(root==NULL){
+        return 0;
+    }
+    return root->data +sum(root->left) +sum(root->right);
+}
 
 int main(){ 
     node* root = buildTree();
@@ -111,7 +117,7 @@ int main(){
     //printKthLevel(root,3);
     //printAllLevels(root);
     cout<<count(root)<<endl;
-
+    cout<<sum(root)<<endl;
 
 return 0;
 }
