@@ -1,0 +1,47 @@
+#include <bits/stdc++.h>
+using namespace std;
+#define fastio  ios_base::sync_with_stdio(false);cin.tie(0);cout.tie(0);
+#define ll   long long int
+#define endl '\n'
+#define INF    10000000
+#define D    998244353
+#define PI   3.14159265
+#define N    1000000007
+#define M     200001
+
+
+int solve(int a[],int low,int high){
+
+    if(low>high){
+        return 0;
+    }
+    if(low==high){
+        return a[low];
+    }
+      int mid=low+(high-low)/2;
+    
+    if(mid<high && a[mid+1]<a[mid]){
+        return mid+1;
+    }
+    if(mid>low && a[mid-1]>a[mid]){
+        return mid;
+    }
+
+    if(a[high]>a[mid]){
+        return solve(a,low,mid-1);
+    }else{
+        return solve(a,mid+1,high);
+    }
+
+
+
+
+}
+int main()
+{
+    int a[]={3,4,5,6,2};
+    int n=sizeof(a)/sizeof(int);
+    int indexOfSmallelementInRotetedArraySorted=solve(a,0,n-1);
+        cout<<indexOfSmallelementInRotetedArraySorted<<endl;
+    return 0;
+}
